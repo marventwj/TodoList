@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -20,9 +21,13 @@ public class MainApplication {
         Scanner sc = new Scanner(System.in);  // Create a Scanner object
         int selection = sc.nextInt();  // Read user input
 
+        ArrayList<Task> overallTask = new ArrayList<Task>();    // This will be the overall task for everyone.
+        ToDoList toDoList = new ToDoList(); // This will be the to do  for everyone.
+
         switch(selection) {
             case 1:
                 System.out.println("1) Add a task");
+
                 break;
             case 2:
                 System.out.println("2) Display My To-Do List ");
