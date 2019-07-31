@@ -51,4 +51,12 @@ public class ToDoList {
 			if (task.isComplete() == true) completedTasks.add(task);
 		return completedTasks;
 	}
+
+
+	public ArrayList<Task> filterTask(ArrayList<Task> tasks){
+		return null;
+//		for (Task temp : tasks) {
+//			System.out.println(temp);
+//		}
+	}
 }
