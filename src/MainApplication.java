@@ -1,8 +1,10 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainApplication {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //        System.out.println("Hello World");
 
         System.out.println("Welcome To TEAM 4 TO-DO List App.\n Please make a selection: ");
@@ -24,9 +26,11 @@ public class MainApplication {
         ArrayList<Task> overallTask = new ArrayList<Task>();    // This will be the overall task for everyone.
         ToDoList toDoList = new ToDoList(); // This will be the to do  for everyone.
 
-        switch(selection) {
+        switch (selection) {
             case 1:
-                System.out.println("1) Add a task");
+                System.out.println("You selected: \"Add a task\"");
+
+                overallTask = addATask(sc, overallTask, toDoList);
 
                 break;
             case 2:
@@ -63,4 +67,53 @@ public class MainApplication {
                 // code block
         }
     }
+
+    private static ArrayList<Task> addATask(Scanner sc, ArrayList<Task> overallTask, ToDoList toDoList) {
+        while (true) {
+            try {
+                Task newTask = new Task();
+                System.out.println("Please enter a title");
+                sc = new Scanner(System.in);
+                newTask.setTitle(sc.nextLine());
+
+                System.out.println("Please enter a description");
+                sc = new Scanner(System.in);
+                newTask.setTitle(sc.nextLine());
+
+                System.out.println("Please enter a start date in this format : dd-mm-yyyy");
+                sc = new Scanner(System.in);
+                SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
+                Date startDate = format.parse(sc.nextLine());
+                newTask.setStartDate(startDate);
+
+                System.out.println("Please enter a end date in this format : dd-mm-yyyy");
+                sc = new Scanner(System.in);
+                Date endDate = format.parse(sc.nextLine());
+                newTask.setStartDate(endDate);
+
+                // Default Task is Not Completed
+                newTask.setComplete(false);
+
+                while (true) {
+                    try {
+                        System.out.println("Please enter a priory");
+                        sc = new Scanner(System.in);
+                        newTask.setPriotryNo(sc.nextInt());
+                        if (newTask.getPriotryNo() >= 1 && newTask.getPriotryNo() <= 1000) {
+                            break;  // Break this while loop
+                        }
+                    } catch (Exception e) {
+
+                    }
+                }
+
+                return toDoList.addTask(overallTask, newTask);
+            } catch (Exception e) {
+                System.out.println("Failed adding a task");
+                return overallTask;
+            }
+        }
+    }
+
+
 }
