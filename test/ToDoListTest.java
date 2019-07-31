@@ -75,32 +75,32 @@ public class ToDoListTest {
         assertEquals(2, tasks.size());
     }
 
-	@Test
-	public void testgetStatus() {
-		assertNotNull(todoList);
-		todoList.addTask(task1);
-		assertEquals(false, todoList.getStatus(task1.getDescription()));
-		todoList.completeTask(task1.getDescription());
-		assertEquals(true, todoList.getStatus(task1.getDescription()));
-	}
-	@Test
-	public void testRemoveTask() {
-		assertNotNull(todoList);
-		todoList.addTask(task1);
-		todoList.addTask(task2);;
-		
-		todoList.removeTask(task1.getDescription());
-		assertNull(todoList.getTask(task1.getDescription()));	
-	}
-	@Test
-	public void testGetCompletedTasks() {
-		task1.setComplete(true);
-		task3.setComplete(true);
-		todoList.addTask(task1);
-		todoList.addTask(task2);
-		todoList.addTask(task3);
-		
-		Collection<Task> tasks = todoList.getCompletedTasks();
-		assertEquals(2, tasks.size());
-	}
+//	@Test
+//	public void testgetStatus() {
+//		assertNotNull(todoList);
+//		todoList.addTask(task1);
+//		assertEquals(false, todoList.getStatus(task1.getDescription()));
+//		todoList.completeTask(task1.getDescription());
+//		assertEquals(true, todoList.getStatus(task1.getDescription()));
+//	}
+//	@Test
+//	public void testRemoveTask() {
+//		assertNotNull(todoList);
+//		todoList.addTask(task1);
+//		todoList.addTask(task2);;
+//
+//		todoList.removeTask(task1.getDescription());
+//		assertNull(todoList.getTask(task1.getDescription()));
+//	}
+//	@Test
+//	public void testGetCompletedTasks() {
+//		task1.setComplete(true);
+//		task3.setComplete(true);
+//		todoList.addTask(task1);
+//		todoList.addTask(task2);
+//		todoList.addTask(task3);
+//
+//		Collection<Task> tasks = todoList.getCompletedTasks();
+//		assertEquals(2, tasks.size());
+//	}
 }

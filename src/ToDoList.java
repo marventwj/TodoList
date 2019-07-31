@@ -49,26 +49,28 @@ public class ToDoList {
 	}
 
 
-	public Collection<Task> getAllTasks() {
-		if (tasks.size() == 0)
+	public void getAllTasks(ArrayList<Task> overallTask) {
+		if (overallTask.size() == 0)
 		{
 			System.out.println("There are no item in the list");
 		}
 
-		return tasks.values();
+		for(int i =0; i<overallTask.size(); i++) {
+			System.out.println(overallTask.get(i).getTitle());
+		}
 	}
 
 
 
 
-	public Collection<Task> getCompletedTasks() {
-		Collection<Task> completedTasks = new ArrayList<Task> ();
-		Collection<Task> allTasks = new ArrayList<Task> ();
-		allTasks = getAllTasks();
-		for (Task task: allTasks) 
-			if (task.isComplete() == true) completedTasks.add(task);
-		return completedTasks;
-	}
+//	public Collection<Task> getCompletedTasks() {
+//		Collection<Task> completedTasks = new ArrayList<Task> ();
+//		Collection<Task> allTasks = new ArrayList<Task> ();
+//		allTasks = getAllTasks();
+//		for (Task task: allTasks)
+//			if (task.isComplete() == true) completedTasks.add(task);
+//		return completedTasks;
+//	}
 
 
 	public ArrayList<Task> filterTask(ArrayList<Task> tasks){
