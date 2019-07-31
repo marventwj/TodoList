@@ -8,6 +8,8 @@ public class Task {
 	private Date endDate;
 	private int priotryNo;
 	private String category;
+
+	public Task(){}
 	
 	
 	public Task(String description) {

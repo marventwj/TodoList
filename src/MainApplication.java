@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -20,6 +21,8 @@ public class MainApplication {
 //        Scanner scMain = new Scanner(System.in);  // Create a Scanner object
 //        int selection = scMain.nextInt();  // Read user input
         ToDoList tdl = new ToDoList();
+        ArrayList<Task> overallTask = new ArrayList<Task>();    // This will be the overall task for everyone.
+        ToDoList toDoList = new ToDoList(); // This will be the to do  for everyone.
 
         int selection = 100;
 
@@ -30,7 +33,9 @@ public class MainApplication {
 
             if(selection == 1)
             {
-                System.out.println("1) Add a task");
+                System.out.println("You selected: \"Add a task\"");
+                overallTask = addATask(sc, overallTask, toDoList);
+
             }
 
             else if(selection == 2)
