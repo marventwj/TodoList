@@ -28,9 +28,21 @@ public class ToDoList {
 	public Task removeTask(String description) {
 		return tasks.remove(description);
 	}
+
+
+
 	public Collection<Task> getAllTasks() {
+		if (tasks.size() == 0)
+		{
+			System.out.println("There are no item in the list");
+		}
+
 		return tasks.values();
 	}
+
+
+
+
 	public Collection<Task> getCompletedTasks() {
 		Collection<Task> completedTasks = new ArrayList<Task> ();
 		Collection<Task> allTasks = new ArrayList<Task> ();
