@@ -6,9 +6,20 @@ public class ToDoList {
 
 	private HashMap<String, Task> tasks = new HashMap<String, Task>();
 
-	public void addTask (Task task) {
-		tasks.put(task.getDescription(), task);
+	// Davidson
+	public ArrayList<Task> addTask(ArrayList<Task> tasks, Task task) {
+		try {
+			tasks.add(task);
+			System.out.println("Task added.");
+		}catch (Exception e) {
+			System.out.println("Task is not added.");
+		}
+		return tasks;
 	}
+
+//	public void addTask (Task task) {
+//		tasks.put(task.getDescription(), task);
+//	}
 	public void completeTask(String description) {
 		Task task = null;
 		if ((task = tasks.get(description)) != null){
