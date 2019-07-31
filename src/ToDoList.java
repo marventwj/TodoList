@@ -33,20 +33,30 @@ public class ToDoList {
 		};
 		return false;
 	}
-	public Task getTask(String description) {
-		if(tasks.get(description) != null)
-		{
-			System.out.println(tasks.get(description).getTitle());
-		}
-		else
-		{
-			System.out.println("No task found");
-		}
-		return tasks.get(description);
+//	public void getTask(ArrayList<Task> overallTask , String desc) {
+//		for(int i =0; i<overallTask.size(); i++) {
+//			if (overallTask.get(i).getDescription() == desc)
+//			{
+//				System.out.println(overallTask.get(i).getTitle());
+//			}
+//			else
+//			{
+//				System.out.println("No task found");
+//			}
+//
+//		}
+//	}
+	public Task getTask(ToDoList tasks, String title) {
+//		Task task = null;
+//		for(int i = 0; i < tasks.size(); i++) {
+//			task = tasks.get(i);
+//		}
+//		return task;
+		return tasks.getTask(tasks, title);
 	}
-	public Task removeTask(String description) {
-		return tasks.remove(description);
-	}
+//	public Task removeTask(String description) {
+//		return tasks.remove(description);
+//	}
 
 
 	public void getAllTasks(ArrayList<Task> overallTask) {
@@ -73,10 +83,68 @@ public class ToDoList {
 //	}
 
 
-	public ArrayList<Task> filterTask(ArrayList<Task> tasks){
-		return null;
-//		for (Task temp : tasks) {
-//			System.out.println(temp);
-//		}
+	public ArrayList<Task> filterTask(boolean complete, ArrayList<Task> overallTask){
+
+
+
+//		Collection<Task> allTasks = new ArrayList<Task> ();
+//		allTasks = getAllTasks();
+
+
+
+		ArrayList<Task> tasksToReturn = new ArrayList<Task>();
+		if (complete) {
+			for (Task task: overallTask)
+				if (task.isComplete() == true) tasksToReturn.add(task);
+		}
+		else{
+			for (Task task: overallTask)
+				if (task.isComplete() == false) tasksToReturn.add(task);
+		}
+
+
+
+		return tasksToReturn;
 	}
+
+	public Task removeTask(String description) {
+		if(isAbleToRemove(description)) {
+			return tasks.remove(description);
+		}
+		else return null;
+	}
+
+	public boolean isAbleToRemove(String description) {
+		boolean canRemove = false;
+		if(tasks.size()<=0) {
+			System.out.println("List is empty");
+		}
+		else if(tasks.get(description)==null) {
+			System.out.println("Task does not exist");
+		}
+		else {
+			canRemove = true;
+		}
+		return canRemove;
+	}
+
+	public Boolean doesTaskExist(ArrayList<Task> tasks, String title) {
+		Boolean doesTaskExist = false;
+		for (int i = 0; i < tasks.size(); i++) {
+			String taskTitle = tasks.get(i).getTitle();
+			if (taskTitle == title) {
+				doesTaskExist = true;
+				break;
+			}
+			else {
+				doesTaskExist = false;
+			}
+		}
+		return doesTaskExist;
+	}
+	public void editTask(Task task, String newDescription) {
+		task.setDescription(newDescription);
+	}
+
+
 }

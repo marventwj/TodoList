@@ -49,16 +49,53 @@ public class MainApplication {
             else if(selection == 3)
             {
                 System.out.println("3) Remove a Task");
+                System.out.println("Enter task name: ");
+                //Scanner sc = new Scanner(System.in);
+                String taskName = sc.nextLine();
+                toDoList.removeTask(taskName);
             }
 
             else if(selection == 4)
             {
-                System.out.println("4) Mark Task as Complete");
+                System.out.println("Type '1' to show completed tasks, Type '2' to show incompleted tasks");
+                selection = sc.nextInt();  // Read user input
+
+                ArrayList<Task> tasksToPrint = new ArrayList<Task>();
+                if (selection == 1){
+                    tasksToPrint = tdl.filterTask(true, overallTask);
+                    System.out.println("Completed Tasks: ");
+                }
+                else{
+                    tasksToPrint = tdl.filterTask(false, overallTask);
+                    System.out.println("Incompleted Tasks: ");
+                }
+
+                for (Task task: tasksToPrint){
+                    System.out.println(task.getTitle());
+                }
+//                ArrayList<Task> completedTasks = todoList.filterTask(true);
             }
 
             else if(selection == 5)
             {
                 System.out.println("5) Edit Task's Description");
+                System.out.println("Please enter the title of the task you want to edit: ");
+                sc.nextLine();
+                String taskTitle = sc.nextLine();
+                Task taskToBeEdited = toDoList.getTask(tdl, taskTitle);
+                Boolean taskExists = toDoList.doesTaskExist(overallTask, taskTitle);
+                if (taskExists) {
+                    System.out.println("Current description of selected task: " + taskToBeEdited.getDescription());
+                    System.out.println("Please enter the edit you would like to make: ");
+                    String newDescription = sc.nextLine();
+                    toDoList.editTask(taskToBeEdited, newDescription);
+                    System.out.println("Task has been successfully edited to: " + taskToBeEdited.getDescription() + "!");
+
+                }
+                else {
+                    System.out.println("This task does not exist!");
+
+                }
             }
 
             else if(selection == 6)
@@ -72,7 +109,7 @@ public class MainApplication {
                 System.out.println("7) Search for task by Description");
                 System.out.println("Enter description");
                 String desc = sc7.nextLine();
-                tdl.getTask(desc);
+                tdl.getTask(tdl , desc);
             }
 
             else if(selection == 8)
