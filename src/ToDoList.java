@@ -23,12 +23,19 @@ public class ToDoList {
 		return false;
 	}
 	public Task getTask(String description) {
+		if(tasks.get(description) != null)
+		{
+			System.out.println(tasks.get(description).getTitle());
+		}
+		else
+		{
+			System.out.println("No task found");
+		}
 		return tasks.get(description);
 	}
 	public Task removeTask(String description) {
 		return tasks.remove(description);
 	}
-
 
 
 	public Collection<Task> getAllTasks() {

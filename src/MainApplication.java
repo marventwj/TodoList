@@ -17,45 +17,80 @@ public class MainApplication {
         System.out.println("10) Export to-do list");
         System.out.println("11) Tag each task");
 
-        Scanner sc = new Scanner(System.in);  // Create a Scanner object
-        int selection = sc.nextInt();  // Read user input
+//        Scanner scMain = new Scanner(System.in);  // Create a Scanner object
+//        int selection = scMain.nextInt();  // Read user input
+        ToDoList tdl = new ToDoList();
 
-        switch(selection) {
-            case 1:
+        int selection = 100;
+
+        while(selection != 0)
+        {
+            Scanner sc = new Scanner(System.in);  // Create a Scanner object
+            selection = sc.nextInt();  // Read user input
+
+            if(selection == 1)
+            {
                 System.out.println("1) Add a task");
-                break;
-            case 2:
+            }
+
+            else if(selection == 2)
+            {
                 System.out.println("2) Display My To-Do List ");
-                break;
-            case 3:
+                tdl.getAllTasks();
+            }
+
+            else if(selection == 3)
+            {
                 System.out.println("3) Remove a Task");
-                break;
-            case 4:
+            }
+
+            else if(selection == 4)
+            {
                 System.out.println("4) Mark Task as Complete");
-                break;
-            case 5:
+            }
+
+            else if(selection == 5)
+            {
                 System.out.println("5) Edit Task's Description");
-                break;
-            case 6:
+            }
+
+            else if(selection == 6)
+            {
                 System.out.println("6) Filter Task as complete/incomplete");
-                break;
-            case 7:
+            }
+
+            else if(selection == 7)
+            {
+                Scanner sc7 = new Scanner(System.in);
                 System.out.println("7) Search for task by Description");
-                break;
-            case 8:
+                System.out.println("Enter description");
+                String desc = sc7.nextLine();
+                tdl.getTask(desc);
+            }
+
+            else if(selection == 8)
+            {
                 System.out.println("8) Prioritize Task");
-                break;
-            case 9:
+            }
+
+            else if(selection == 9)
+            {
                 System.out.println("9) Re-prioritize task");
-                break;
-            case 10:
+            }
+
+            else if(selection == 10)
+            {
                 System.out.println("10) Export to-do list");
-                break;
-            case 11:
+            }
+
+            else if(selection == 11)
+            {
                 System.out.println("11) Tag each task");
-                break;
-            default:
-                // code block
+            }
+            else
+            {
+                System.out.println("System ending");
+            }
         }
     }
 }
